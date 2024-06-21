@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Request Savings Statement</title>
+    <script>
+      async function getMemberData() {
+        const memberName = document.getElementById('memberName').value;
+        const response = await fetch('http://localhost:3000/getMemberData', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ memberName: memberName }),
+        });
+        const data = await response.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Member Savings</h1>
+    <input type="text" id="memberName" placeholder="Enter member name">
+  
+    <button onclick="getMemberData()">Request Statement</button>
+    <pre id="output"></pre>
+  </body>
+</html>
+
+
+
+  
+
